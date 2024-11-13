@@ -1,2 +1,2 @@
 # Vaulted-Frames
-- A place to store all your personal
+- A place to store all your personal images

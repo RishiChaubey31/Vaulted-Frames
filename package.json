@@ -1,0 +1,27 @@
+{
+  "name": "vaulted-frames",
+  "version": "1.0.0",
+  "description": "- A place to store all your personal images",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RishiChaubey31/Vaulted-Frames.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RishiChaubey31/Vaulted-Frames/issues"
+  },
+  "homepage": "https://github.com/RishiChaubey31/Vaulted-Frames#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.1",
+    "nodemon": "^3.1.7"
+  }
+}
