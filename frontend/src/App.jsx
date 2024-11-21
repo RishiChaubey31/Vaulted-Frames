@@ -8,7 +8,7 @@ import CreatePage from './pages/CreatePage'
 
 function App() {
   return (
-    <Box className="bg-blue-900 min-h-screen">
+    <Box >
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
