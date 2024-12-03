@@ -1,134 +1,65 @@
-import { Box, Container, Typography, Stack, Button } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
-import {
-  MdOutlineAddAPhoto,
-  MdLightMode,
-  MdOutlineNightlightRound,
-} from "react-icons/md";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Camera, Sun, Moon } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ mode, toggleTheme }) => {
+  const gradientClass = mode === 'light' 
+    ? 'bg-gradient-to-r from-purple-900 via-purple-500 to-purple-900' 
+    : 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 ';
+
   return (
-    <Container className="max-h-1140px p-4 mx-t">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: {
-            xs: "column",
-            sm: "row",
-          },
-          justifyContent: "space-between",
-          alignItems: {
-            xs: "center",
-            sm: "center",
-          },
-          py: 2,
-          width: "100%",
-          overflow: "hidden", // Prevent text overflow
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: {
-              xs: "center",
-              sm: "flex-start",
-            },
-            width: {
-              xs: "100%",
-              sm: "auto",
-            },
-            maxWidth: "100%", // Ensure full width containment
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              background: "linear-gradient(90deg, indigo, purple, black)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              letterSpacing: "0.15rem",
-              fontSize: {
-                xs: "1.75rem", // Slightly reduced for mobile
-                sm: "2.25rem",
-                md: "2.5rem",
-                lg: "3rem",
-                xl: "3rem",
-              },
-              textAlign: {
-                xs: "center",
-                sm: "left",
-              },
-              width: "100%",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              Vaulted Frames
+    <nav className="w-full border-b border-gray-200 dark:border-gray-500 sticky top-0 bg-white dark:bg-gray-900 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row justify-between items-center py-3 sm:py-4 gap-3 sm:gap-0">
+          {/* Brand Section */}
+          <div className="text-center sm:text-left">
+            <Link 
+              to="/" 
+              className="block text-transparent hover:opacity-90 transition-opacity"
+            >
+              <h1 className={`${gradientClass} font-bold uppercase tracking-wide 
+                text-xl sm:text-2xl md:text-3xl lg:text-4xl 
+                bg-clip-text text-transparent`}
+              >
+                Vaulted Frames
+              </h1>
             </Link>
-          </Typography>
+            <p className={`${gradientClass} italic bg-clip-text text-transparent
+              text-xs sm:text-sm md:text-base 
+              mt-1 sm:mt-2`}
+            >
+              Elevate your memories with timeless designs
+            </p>
+          </div>
 
-          <Typography
-            variant="subtitle1"
-            sx={{
-              color: "black",
-              fontStyle: "italic",
-              fontSize: {
-                xs: "0.825rem",
-                sm: "0.9rem",
-                md: "1rem",
-              },
-              textAlign: {
-                xs: "center",
-                sm: "left",
-              },
-              mt: 1,
-              width: "100%",
-              wordWrap: "break-word",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            Elevate your memories with timeless designs.
-          </Typography>
-        </Box>
-
-        {/* Placeholder for additional nav items */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            mt: { xs: 2, sm: 0 },
-          }}
-        >
-          {/* Your additional nav items will go here */}
-        </Box>
-
-        <Stack
-          direction="row" // This makes it horizontal
-          spacing={2} // Adds space between items
-          alignItems="center"
-          // Vertical alignment
-        >
-          <Link
-            to="/create"
-            className="text-2xl sm:1xl md:text-4xl lg:text-5xl"
-          >
-            <Button>
-              <MdOutlineAddAPhoto className="h-14 w-14 text-purple-700" />
-            </Button>
-          </Link>
-          {/* <Button onClick={}>
-
-          </Button> */}
-        </Stack>
-      </Box>
-    </Container>
+          {/* Actions */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link 
+              to="/create" 
+              className="inline-flex items-center justify-center p-2 rounded-full
+                hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              <Camera className={`w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7
+                ${mode === 'light' ? 'text-purple-600 hover:text-purple-700' : 
+                'text-yellow-400 hover:text-yellow-500'}`} 
+              />
+            </Link>
+            <button 
+              onClick={toggleTheme}
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full 
+                transition-colors"
+              aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {mode === 'light' ? (
+                <Sun className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600 hover:text-purple-700" />
+              ) : (
+                <Moon className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-400 hover:text-yellow-500" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 
